@@ -10,6 +10,7 @@ This repository serves as a comprehensive guide for a networking project involvi
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Steps](#steps)
 
 ## Project Overview
 
@@ -40,6 +41,39 @@ Before getting started with this project, you will need the following:
 This project offers a practical, hands-on approach to network security auditing. By following the steps outlined in the guide, users can gain valuable insights into the security of their wireless networks, identify vulnerabilities, and take appropriate measures to secure their networks.
 
 **Disclaimer**: It is essential to use these tools responsibly and only on networks for which you have explicit permission. Unauthorized access to networks is illegal and unethical.
+## Steps
+
+1. Open the Kali Linux Terminal.
+2. Ensure that you can see the "Wi-Fi symbol" in the top right corner of Kali.
+3. Make sure you have installed the specific drivers for your adapter in Kali.
+4. Open a second terminal, then type the following command: ```sudo airmon-ng start wlan0``` to change your adapter mode from "Management Mode" to "Monitor Mode."
+5. Check if your network in Monitor mode by typing iwconfig.![wlan0](https://github.com/electromist/Wifi-Hacking-Project/assets/101152694/356ab9b9-07c5-44b3-96e4-689d344426df)
+
+6. Create a directory named "tools" using the command ```mkdir tools```.
+7. In the "tools" folder, install Wifite2 ([Watch this video for installation](https://www.youtube.com/watch?v=OdFvNLdccWQ)).
+8. Run Wifite2 with the command: ```sudo Wifite2.py```.
+9. Identify the network you want to attack; once found, press Ctrl+C once.
+10. Select the target network number (NUM) you wish to attack. Example: I choose 1 for GalaxyA735GCDAD. ![deauth](https://github.com/electromist/Wifi-Hacking-Project/assets/101152694/5a2bf9d4-0442-4e76-aa3c-e3993b13c86a)
+
+
+11. Skip (by using Ctrl+C and "c" to continue) to the Deauthentication Attack,(watch the video in Step 7 if you face any trouble).
+12. Once the handshake is captured, it will stop automatically.
+13. In the terminal, type ```cd hs``` to navigate to the handshake file.
+14. You will see a file with a name like "handshake_GalaxyA735GCDAD_8E-0E-CC-6B-9D-C4_2023-11-08T14-19-38.cap." Ensure it has a .cap extension.
+15. Transfer the .cap file from Kali to Windows.
+16. Go to [https://hashcat.net/](https://hashcat.net/) in your browser and select "Convert."
+17. Choose the .cap file you transferred from Kali by clicking the "Browse" button, and then press the "Convert" button.
+18. You will be redirected to a conversion page to download the .hc22000 file.
+19. Rename it as "hdsk.hc22000" while downloading (References: https://www.youtube.com/watch?v=tjuTNHJJuUQ).
+20. Now, visit [https://hashcat.net/hashcat/](https://hashcat.net/hashcat/) and download the latest version of Hashcat.
+21. Extract the Hashcat folder.
+22. Download a rockyou.txt wordlist from Github ([Download rockyou.txt](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt)). You can choose any other wordlist if you prefer.
+23. Move the "hdsk.hc22000" and "rockyou.txt" files to the extracted Hashcat folder.
+24. Open the Command Prompt in Administrator Mode and change the directory to the extracted Hashcat folder using the ```cd``` command. For example: ```cd C:\Users\elect\Desktop\hashcat-6.2.6```
+25. Type the following command: "hashcat -m 22000 -a 0 hdsk.hc22000 rockyou.txt ( References: https://www.youtube.com/watch?v=KLry7bf51QQ )."
+26. Initialization may take a few minutes.
+27. Hashcat will start a Dictionary Attack, and in a few minutes, it will decode the password. Example: My wifi password was "crocodile" which was decoded as shown in this screenshot: ![Screenshot (1)](https://github.com/electromist/Wifi-Hacking-Project/assets/101152694/dd1eff7b-4bc8-48fd-8f56-376dcffb3292)
+
 
 ## Contributing
 
