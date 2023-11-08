@@ -8,9 +8,9 @@ This repository serves as a comprehensive guide for a networking project involvi
 - [Prerequisites](#prerequisites)
 - [Project Setup](#project-setup)
 - [Usage](#usage)
+- [Steps](#steps)
 - [Contributing](#contributing)
 - [License](#license)
-- [Steps](#steps)
 
 ## Project Overview
 
